@@ -1,24 +1,12 @@
-import React from 'react'
-import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin'
-import { CompactChipField } from 'ra-compact-ui'
+import React from 'react';
+import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin';
 
-const reviewChipFieldOptions = {
-    Done: { color: 'primary' },
-    Waiting: {
-        color: '#ffc107ff',
-    },
-    Revision: {
-        color: 'rgb(244, 67, 54)',
-    },
-}
-
-const ProjectList = (props) => (
+const ProjectList = props => (
     <List {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />
-            {/* <TextField source="progressStatus" /> */}
-            <CompactChipField source="progressStatus" options={reviewChipFieldOptions} />
+            <TextField source="progressStatus" />
             <TextField source="priority" />
             <DateField source="startDate" />
             <TextField source="timeElapsed" />
@@ -37,6 +25,6 @@ const ProjectList = (props) => (
             </ReferenceField>
         </Datagrid>
     </List>
-)
+);
 
-export default ProjectList
+export default ProjectList;
