@@ -25,7 +25,6 @@ test('renders correctly', async () => {
             </RaBox>
         ),
         resource: 'users',
-        basePath: '/users',
         version: 1,
     }
 

@@ -7,9 +7,7 @@ import { cloneRecursively, getComponentsNames, isLayoutComponent } from '../core
 const sanitizeRestProps = ({
     children,
     className,
-    record,
     resource,
-    basePath,
     version,
     initialValues,
     translate,
@@ -18,10 +16,8 @@ const sanitizeRestProps = ({
 
 const CompactShowLayout = ({
     layoutComponents,
-    basePath,
     className,
     children,
-    record,
     resource,
     version,
     ...rest
@@ -37,8 +33,6 @@ const CompactShowLayout = ({
                     (x) => (
                         <RaField
                             field={x}
-                            basePath={basePath}
-                            record={record}
                             resource={resource}
                         />
                     )
@@ -48,7 +42,6 @@ const CompactShowLayout = ({
     )
 }
 CompactShowLayout.propTypes = {
-    basePath: PropTypes.string,
     record: PropTypes.object,
     resource: PropTypes.string,
     version: PropTypes.number,

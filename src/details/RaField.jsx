@@ -5,7 +5,7 @@ import { Labeled } from 'react-admin'
 
 const sanitizeRestProps = ({ layoutComponentName, ...rest }) => rest
 
-const RaField = ({ field, record, resource, basePath, ...props }) => (
+const RaField = ({ field, resource, ...props }) => (
     <div
         key={field.props.source}
         className={classnames(`ra-field ra-field-${field.props.source}`, field.props.className)}
@@ -13,9 +13,7 @@ const RaField = ({ field, record, resource, basePath, ...props }) => (
     >
         {field.props.label !== false ? (
             <Labeled
-                record={record}
                 resource={resource}
-                basePath={basePath}
                 label={field.props.label}
                 source={field.props.source}
                 disabled={false}
@@ -26,16 +24,13 @@ const RaField = ({ field, record, resource, basePath, ...props }) => (
             field
         ) : (
             React.cloneElement(field, {
-                record,
                 resource,
-                basePath,
             })
         )}
     </div>
 )
 
 RaField.propTypes = {
-    basePath: PropTypes.string,
     record: PropTypes.object,
     resource: PropTypes.string,
     field: PropTypes.object,

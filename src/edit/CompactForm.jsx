@@ -29,7 +29,6 @@ CompactForm.propTypes = {
 }
 
 const CompactFormView = ({
-    basePath,
     children,
     className,
     component: Component,
@@ -62,7 +61,6 @@ const CompactFormView = ({
                         (x) => (
                             <FormInput
                                 input={x}
-                                basePath={basePath}
                                 record={record}
                                 resource={resource}
                                 variant={x.props.variant || variant}
@@ -74,7 +72,6 @@ const CompactFormView = ({
             </Component>
             {toolbar &&
                 cloneElement(toolbar, {
-                    basePath,
                     handleSubmitWithRedirect,
                     handleSubmit,
                     invalid,
@@ -92,7 +89,6 @@ const CompactFormView = ({
 }
 
 CompactFormView.propTypes = {
-    basePath: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
     handleSubmit: PropTypes.func, // passed by react-final-form
