@@ -1,14 +1,12 @@
 import React from 'react'
 import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin'
 import { CompactChipField } from 'ra-compact-ui'
+import { color } from '@mui/system'
 
 const reviewChipFieldOptions = {
-    Done: { color: 'primary' },
-    Waiting: {
-        color: '#ffc107ff',
-    },
-    Revision: {
-        color: 'rgb(244, 67, 54)',
+    Done: {
+        // color: 'primary', //from MUI palette
+        color: 'rgb(0, 255, 45)', //custom color - breaks mui theme if color is not from palette
     },
 }
 

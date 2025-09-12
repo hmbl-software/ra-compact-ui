@@ -35,8 +35,10 @@ const CompactChipField = ({
     const localSx =
         variant === 'solid'
             ? (t) => ({
-                  color: chipColor,
-                  backgroundColor: muiButtonBackground(t, optionValue?.color),
+                  //   color: chipColor,
+                  //   backgroundColor: 'rgb(0, 255, 45)',
+                  //   backgroundColor: muiButtonBackground(t, optionValue?.color), //breaks mui theme if color is not from palette
+                  //   backgroundColor: alpha('rgb(0, 255, 45)', 0.12),
               })
             : {}
     const mergedSx = [rest.sx, localSx]
