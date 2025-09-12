@@ -1,12 +1,22 @@
-import React from 'react';
-import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin';
+import React from 'react'
+import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin'
+import { CompactChipField } from 'ra-compact-ui'
+import { color } from '@mui/system'
 
-const ProjectList = props => (
+const reviewChipFieldOptions = {
+    Done: {
+        // color: 'primary', //from MUI palette
+        color: 'rgb(0, 255, 45)', //custom color - breaks mui theme if color is not from palette
+    },
+}
+
+const ProjectList = (props) => (
     <List {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="progressStatus" />
+            {/* <TextField source="progressStatus" /> */}
+            <CompactChipField source="progressStatus" options={reviewChipFieldOptions} />
             <TextField source="priority" />
             <DateField source="startDate" />
             <TextField source="timeElapsed" />
@@ -25,6 +35,6 @@ const ProjectList = props => (
             </ReferenceField>
         </Datagrid>
     </List>
-);
+)
 
-export default ProjectList;
+export default ProjectList
