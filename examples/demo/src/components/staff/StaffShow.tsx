@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     ArrayField,
     ChipField,
@@ -11,9 +10,9 @@ import {
 } from 'react-admin'
 import { ShowSplitter, AvatarField } from 'ra-compact-ui'
 
-const StaffShow = (props) => {
+const StaffShow = () => {
     return (
-        <Show {...props} component="div">
+        <Show component="div">
             <ShowSplitter
                 leftSideProps={{
                     md: 4,
@@ -26,7 +25,7 @@ const StaffShow = (props) => {
                         <AvatarField
                             source="avatar_url"
                             altSource="full_name"
-                            size="150px"
+                            size="150"
                             sx={{
                                 marginBottom: '10px',
                                 flexShrink: 0,
@@ -48,7 +47,7 @@ const StaffShow = (props) => {
                         <Tab label="Overview">
                             <TextField source="description" />
                         </Tab>
-                        <Tab label="Projects"></Tab>
+                        <Tab label="Projects" />
                     </TabbedShowLayout>
                 }
             />
@@ -56,4 +55,4 @@ const StaffShow = (props) => {
     )
 }
 
-export default StaffShow
+export { StaffShow }

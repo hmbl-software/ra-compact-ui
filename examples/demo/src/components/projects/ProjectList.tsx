@@ -1,8 +1,7 @@
-import React from 'react';
-import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin';
+import { Datagrid, List, TextField, DateField, ReferenceField } from 'react-admin'
 
-const ProjectList = props => (
-    <List {...props}>
+const ProjectList = () => (
+    <List>
         <Datagrid rowClick="show">
             <TextField source="id" />
             <TextField source="name" />
@@ -25,6 +24,6 @@ const ProjectList = props => (
             </ReferenceField>
         </Datagrid>
     </List>
-);
+)
 
-export default ProjectList;
+export { ProjectList }

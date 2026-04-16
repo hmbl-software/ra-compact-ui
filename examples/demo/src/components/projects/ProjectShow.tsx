@@ -1,6 +1,6 @@
-import React from 'react'
 import {
     Show,
+    SimpleShowLayout,
     ReferenceField,
     TextField,
     ChipField,
@@ -9,15 +9,15 @@ import {
     Datagrid,
     SingleFieldList,
 } from 'react-admin'
-import { BoxedShowLayout, RaBox } from 'ra-compact-ui'
-import UserChipField from './UserChipField'
+import Box from '@mui/material/Box'
+import { UserChipField } from './UserChipField'
 
-const ProjectShow = (props) => {
+const ProjectShow = () => {
     return (
-        <Show {...props}>
-            <BoxedShowLayout>
-                <RaBox display="flex">
-                    <RaBox
+        <Show>
+            <SimpleShowLayout>
+                <Box display="flex">
+                    <Box
                         display="flex"
                         flexWrap="wrap"
                         flexGrow={4}
@@ -27,7 +27,7 @@ const ProjectShow = (props) => {
                             marginRight: '50px',
                         }}
                     >
-                        <RaBox flex="0 0 100%" display="flex" justifyContent="space-between">
+                        <Box flex="0 0 100%" display="flex" justifyContent="space-between">
                             <ReferenceField
                                 label="Client Name"
                                 source="client_id"
@@ -38,14 +38,14 @@ const ProjectShow = (props) => {
                             </ReferenceField>
                             <ChipField source="progressStatus" label="Progress Status" />
                             <TextField source="priority" />
-                        </RaBox>
-                        <RaBox flex="0 0 100%" display="flex" justifyContent="space-between">
+                        </Box>
+                        <Box flex="0 0 100%" display="flex" justifyContent="space-between">
                             <DateField source="startDate" />
                             <TextField source="timeElapsed" />
                             <DateField source="deadline" />
-                        </RaBox>
-                    </RaBox>
-                    <RaBox display="inline-flex" flexDirection="column" flexGrow={1}>
+                        </Box>
+                    </Box>
+                    <Box display="inline-flex" flexDirection="column" flexGrow={1}>
                         <ReferenceField
                             label="Project Manager"
                             source="manager_id"
@@ -70,9 +70,9 @@ const ProjectShow = (props) => {
                         >
                             <UserChipField source="full_name" />
                         </ReferenceField>
-                    </RaBox>
-                </RaBox>
-                <RaBox flex="0 0 100%" display="flex" mt="20px">
+                    </Box>
+                </Box>
+                <Box flex="0 0 100%" display="flex" mt="20px">
                     <ArrayField source="stages">
                         <Datagrid>
                             <DateField source="date" />
@@ -91,10 +91,10 @@ const ProjectShow = (props) => {
                             </ArrayField>
                         </Datagrid>
                     </ArrayField>
-                </RaBox>
-            </BoxedShowLayout>
+                </Box>
+            </SimpleShowLayout>
         </Show>
     )
 }
 
-export default ProjectShow
+export { ProjectShow }

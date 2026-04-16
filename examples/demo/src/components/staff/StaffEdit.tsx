@@ -1,11 +1,10 @@
-import React from 'react'
 import { Edit, TextInput, ArrayInput, SimpleFormIterator, Form } from 'react-admin'
 import { Grid } from '@mui/material'
 
 const firstRowCols = 3
 
-const StaffEdit = (props) => (
-    <Edit {...props}>
+const StaffEdit = () => (
+    <Edit>
         <Form>
             <Grid container>
                 <Grid item sm={firstRowCols}>
@@ -30,4 +29,4 @@ const StaffEdit = (props) => (
     </Edit>
 )
 
-export default StaffEdit
+export { StaffEdit }
