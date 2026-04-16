@@ -1,0 +1,30 @@
+name: 'Setup Node & Install'
+description: 'Checkout, setup Node from .nvmrc, cache and install yarn dependencies'
+
+inputs:
+  registry-url:
+    description: 'npm registry URL for publishing'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+    - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+      with:
+        node-version-file: '.nvmrc'
+        registry-url: ${{ inputs.registry-url }}
+
+    - name: Cache node_modules
+      uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
