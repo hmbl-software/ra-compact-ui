@@ -25,8 +25,8 @@ export const AvatarField = ({
         <Avatar
             src={(record[source] && getOptimizedSrc(record[source] as string, size)) || fallback}
             sx={{
-                width: (theme: Theme) => theme.spacing(parseInt(size)),
-                height: (theme: Theme) => theme.spacing(parseInt(size)),
+                width: `${size}px`,
+                height: `${size}px`,
                 ...sx,
             }}
             alt={altSource ? (record[altSource] as string) : undefined}

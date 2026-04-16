@@ -51,7 +51,7 @@
         "build": "rimraf ./dist && tsc",
         "prepare": "yarn build",
         "prettier": "prettier --config prettier.config.js --write ./src/",
-        "start-demo": "cd examples/demo && rm -rf node_modules/ra-compact-ui && yarn --check-files && yarn dev"
+        "start-demo": "cd examples/demo && yarn dev"
     },
     "repository": "https://github.com/ValentinnDimitroff/ra-compact-ui.git",
     "author": "Valentin Dimitroff",

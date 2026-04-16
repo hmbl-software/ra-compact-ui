@@ -9,7 +9,6 @@
         "@mui/icons-material": "^5.8.4",
         "@mui/material": "5.11.0",
         "@mui/system": "^5.9.0",
-        "ra-compact-ui": "file:../../",
         "ra-data-fakerest": "^5.0.0",
         "react": "^18.0.0",
         "react-admin": "^5.0.0",
