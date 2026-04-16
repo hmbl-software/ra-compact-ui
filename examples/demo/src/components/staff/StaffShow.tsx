@@ -1,3 +1,4 @@
+import { AvatarField, ShowSplitter } from 'ra-compact-ui'
 import {
     ArrayField,
     ChipField,
@@ -8,7 +9,6 @@ import {
     TabbedShowLayout,
     TextField,
 } from 'react-admin'
-import { ShowSplitter, AvatarField } from 'ra-compact-ui'
 
 const StaffShow = () => {
     return (
@@ -47,7 +47,9 @@ const StaffShow = () => {
                         <Tab label="Overview">
                             <TextField source="description" />
                         </Tab>
-                        <Tab label="Projects" />
+                        <Tab label="Projects">
+                            <div>No projects yet</div>
+                        </Tab>
                     </TabbedShowLayout>
                 }
             />
