@@ -3,13 +3,16 @@ import {
     SimpleShowLayout,
     ReferenceField,
     TextField,
-    ChipField,
     DateField,
     ArrayField,
     Datagrid,
     SingleFieldList,
 } from 'react-admin'
 import Box from '@mui/material/Box'
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'
+import AutorenewIcon from '@mui/icons-material/Autorenew'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import { CompactChipField } from 'ra-compact-ui'
 import { UserChipField } from './UserChipField'
 
 const ProjectShow = () => {
@@ -36,7 +39,14 @@ const ProjectShow = () => {
                             >
                                 <TextField source="name" />
                             </ReferenceField>
-                            <ChipField source="progressStatus" label="Progress Status" />
+                            <CompactChipField
+                                source="progressStatus"
+                                options={{
+                                    Pending: { color: 'warning', icon: <HourglassEmptyIcon /> },
+                                    InProgress: { color: 'info', icon: <AutorenewIcon /> },
+                                    Done: { color: 'success', icon: <CheckCircleIcon /> },
+                                }}
+                            />
                             <TextField source="priority" />
                         </Box>
                         <Box flex="0 0 100%" display="flex" justifyContent="space-between">

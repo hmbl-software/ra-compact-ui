@@ -85,7 +85,11 @@ export const CompactChipField = ({
             variant={chipVariant}
             color={isPalette && variant !== 'light' ? (color as PaletteColor) : undefined}
             icon={optionValue?.icon}
-            sx={((theme: Theme) => ({ ...buildSx(theme), ...(sx as object) })) as any}
+            sx={((theme: Theme) => ({
+                ...buildSx(theme),
+                '& .MuiChip-icon': { color: 'inherit' },
+                ...(sx as object),
+            })) as any}
         />
     )
 }
