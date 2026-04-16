@@ -3,24 +3,27 @@
         "browser": true,
         "es2021": true
     },
+    "parser": "@typescript-eslint/parser",
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "@typescript-eslint"
     ],
-    "ignorePatterns": ["*.test.js"],
+    "ignorePatterns": ["*.test.ts", "*.test.tsx", "dist/"],
     "rules": {
-        //"linebreak-style": ["error", "windows"],
         "indent": ["error", 4, {
             "ignoredNodes": ["JSXAttribute", "JSXSpreadAttribute"]
         }],
@@ -28,18 +31,15 @@
             "indentLogicalExpressions": true
         }],
         "react/jsx-indent-props": [2, 4],
-        "import/no-unresolved": [
-            0,
-            {
-                "caseSensitive": false
-            }
-        ],
-        "import/prefer-default-export": 0,
-        "react/jsx-props-no-spreading": 0,
-        "react/require-default-props": 0,
-        "react/forbid-prop-types": 0,
+        "react/react-in-jsx-scope": "off",
         "no-nested-ternary": "off",
         "no-unneeded-ternary": 2,
-        "no-use-before-define": 0
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

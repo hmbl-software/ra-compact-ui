@@ -1,6 +1,6 @@
-import { Admin, Resource } from 'react-admin';
-import { ProjectList, ProjectShow, StaffShow, StaffList, StaffEdit } from './components';
-import { dataProvider } from './ra-providers';
+import { Admin, Resource } from 'react-admin'
+import { ProjectList, ProjectShow, StaffShow, StaffList, StaffEdit } from './components'
+import { dataProvider } from './ra-providers'
 
 function App() {
     return (
@@ -16,6 +16,6 @@ function App() {
             />
         </Admin>
     )
-};
+}
 
-export default App;
+export { App }

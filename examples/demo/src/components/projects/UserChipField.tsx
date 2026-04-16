@@ -1,15 +1,19 @@
-import React from 'react'
 import { Avatar } from '@mui/material'
 import { ChipField, useRecordContext } from 'react-admin'
 
-const UserChipField = ({ source = 'fullName', compact }) => {
+interface UserChipFieldProps {
+    source?: string
+    compact?: boolean
+}
+
+const UserChipField = ({ source = 'fullName', compact }: UserChipFieldProps) => {
     const record = useRecordContext()
 
     return (
         <ChipField
             avatar={
                 <Avatar
-                    src={record?.avatar_url}
+                    src={record?.avatar_url as string}
                     sx={{
                         ...(compact
                             ? {
@@ -24,4 +28,4 @@ const UserChipField = ({ source = 'fullName', compact }) => {
     )
 }
 
-export default UserChipField
+export { UserChipField }

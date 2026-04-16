@@ -8,10 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: '16.x'
+          node-version-file: '.nvmrc'
       - run: yarn install --frozen-lockfile
       - run: yarn test
 
@@ -19,13 +19,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: '16.x'
+          node-version-file: '.nvmrc'
           registry-url: https://registry.npmjs.org/
-          always-auth: true
-      - run: yarn
+      - run: yarn install --frozen-lockfile
       - run: yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -37,13 +36,13 @@ jobs:
       contents: read
       packages: write 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+         with:
+          node-version-file: '.nvmrc'
           registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
-      - run: yarn
-      - run: yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
-        env:
+
+       - run: yarn install --frozen-lockfile
+       - run: yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
+         env:
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

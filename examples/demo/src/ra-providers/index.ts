@@ -1,0 +1,1 @@
+export { dataProvider } from './dataProvider'
