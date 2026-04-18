@@ -1,5 +1,6 @@
 # ra-compact-ui
-Enhanced styling components for popular framework [`react-admin`](https://github.com/marmelab/react-admin).
+
+Enhanced styling components for [`react-admin`](https://github.com/marmelab/react-admin), written in TypeScript.
 
 No extra dependencies are required except the ones react-admin is already using.
 
@@ -7,6 +8,7 @@ Why use?
  - reduces styling boilerplate code
  - eases layout customizations
  - maintains native usage of built-in `react-admin` components
+ - full TypeScript support with exported interfaces
 
 [![npm version](https://img.shields.io/npm/v/ra-compact-ui.svg)](https://www.npmjs.com/package/ra-compact-ui)
 [![npm downloads](https://img.shields.io/npm/dm/ra-compact-ui.svg)](https://www.npmjs.com/package/ra-compact-ui)
@@ -15,159 +17,48 @@ Why use?
 [![minzipped size](https://badgen.net/bundlephobia/minzip/ra-compact-ui)](https://bundlephobia.com/result?p=ra-compact-ui)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-Actively maintained and developed with monthly releases!
+## Compatibility
 
-# Installation
+| ra-compact-ui | react-admin | React   |
+|---------------|-------------|---------|
+| 3.x           | ^5.0.0      | ^18.0.0 |
+| 1.x           | ^4.2.7      | ^17 / ^18 |
 
-Available as a npm package. You can install it using:
+## Installation
 
 ```sh
 npm install ra-compact-ui
-#or
+# or
 yarn add ra-compact-ui
 ```
-Run the Demo
-```sh
-npm run start-demo
-#or
-yarn start-demo
-```
-# Table of Contents
-Show View
 
-<ul>
-    <li><a href="#layouts">Layouts</a></li>
-    <ul>
-        <li><a href="#boxedshowlayout">Box ShowLayout</a></li>
-        <li><a href="#gridshowlayout">Grid ShowLayout</a></li>
-        <li><a href="#boxedshowlayout">Compact ShowLayout</a></li>
-        <li><a href="#boxedshowlayout">Show Splitter</a></li>
-    </ul>
-</ul>
+### Peer Dependencies
 
-Create & Edit View
+- `react` ^18.0.0
+- `react-dom` ^18.0.0
+- `react-admin` ^5.0.0
+- `@mui/material` ^5.x
+- `@mui/icons-material` ^5.x
+- `@mui/system` ^5.x
 
-<ul>
-    <li><a href="#compactform">CompactForm</a></li>
-</ul>
-
-# Examples
-## Show View Components
-
-### Layouts
-Layout components which allow building custom Show Layouts using unlimited nesting of `material-ui`'s `Box` or `Grid` components while maintaining native use of all of the `react-admin` field-related components. Each layout can be used inside the `Show` component as well as inside the `TabbedShowLayout`'s `Tab` component.
-
-**Important** - In order for the layouts to work properly you should use the provided wrappers of `material-ui`'s layout components named relatively - `RaBox` and `RaGrid`. They receive and pass all the props provided by the `material-ui`'s api directly.
-
-<br/>
-
-### BoxedShowLayout
-Utilizes `material-ui`'s Box component wrapped inside `RaBox` and provides easy access to common css and flex-box properties.
-
-```jsx
-<BoxedShowLayout>
-    <RaBox display="flex" >
-        <RaBox display="flex" flexWrap="wrap" flexGrow={4} sx={{
-            paddingRight: "50px",
-            borderRight: "solid thin",
-            marginRight: "50px"}}>
-            <RaBox flex="0 0 100%" display="flex" justifyContent="space-between">
-                <ReferenceField label="Client Name" source="clientId" reference="clients">
-                    <TextField source="name" />
-                </ReferenceField>
-                <ChipField source="progressStatus" label="Progress Status" />
-                <TextField source="priority" />
-            </RaBox>
-            <RaBox flex="0 0 100%" display="flex" justifyContent="space-between">
-                <DateField source="startDate" />
-                <TextField source="timeElapsed" />
-                <DateField source="deadline" />
-            </RaBox>
-        </RaBox>
-        <RaBox display="inline-flex" flexDirection="column" flexGrow={1}>
-            <ReferenceField label="Project Manager" source="managerId" reference="staff">
-                <UserChipField source="fullName"  />
-            </ReferenceField>
-            <ReferenceField label="Product Owner" source="productOwnerId" reference="staff">
-                <UserChipField source="fullName"  />
-            </ReferenceField>
-            <ReferenceField label="Marketing Specialist" source="marketingSpecialistId" reference="staff">
-                <UserChipField source="fullName"  />
-            </ReferenceField>
-        </RaBox>
-    </RaBox>
-    <RaBox flex="0 0 100%" display="flex" mt="20px">
-        <ArrayField source="activityRecords">
-            <Datagrid>
-                <DateField source="date" />
-                <TextField source="description" />
-                <TextField source="memberNames" />
-            </Datagrid>
-        </ArrayField>
-    </RaBox>
-</BoxedShowLayout>
-```
-
-![image](https://user-images.githubusercontent.com/26602880/112832780-78bfcb80-909e-11eb-9aa1-9c33bb173fa2.png)
-
-<br/>
-
-### GridShowLayout
-Utilizes `material-ui`'s Grid component wrapped inside `RaGrid`. Useful for aligning fields into rows and columns, as well as for making layout sections responsive.
-
-Usage is absolutely analogous to the `BoxShowLayout`.
-
-<br/>
-
-### CompactShowLayout
-This layout is a more generic version allowing you to pass your own layout building blocks (components). It serves also as the base component wrapped by the above ones.
-
-Pass to `layoutComponents` prop an array which specifies the used layout components to be escaped as non-field components while rendering.
-
-**Important** - All layout components should have a specified `displayName`.
-
-```jsx
-<CompactShowLayout layoutComponents={[CustomBox, RaBox]}>
-    <CustomBox>
-        <TextField source="name"/>
-        <RaBox>
-            <NumberInput source="age" />
-        </RaBox>
-    </CustomBox>
-</CompactShowLayout>
-```
-
-<br/>
+## Components
 
 ### ShowSplitter
-Need to mix up different layouts on the same page and separate different sections? The `<ShowSplitter/>` component helps you do just that with ease.
 
-- Pass the component as single child to the `<Show/>` component.
-- Then pass your different layouts to the `<ShowSplitter/>`'s props `leftSide` and `rightSide`.
+A two-column split layout for Show views. Pass different layouts to `leftSide` and `rightSide`.
 
-**hint** - to escape the default `<Card/>` surface provided by the  `<Show/>` component pass your custom value, e.g. `component="div"`.
+```tsx
+import { ShowSplitter } from 'ra-compact-ui'
 
-```jsx
-import { ShowSplitter } from 'ra-compact-ui';
-
-...
-
-const StaffShow = props => (
-    <Show
-        {...props}
-        component="div"
-    >
+const StaffShow = () => (
+    <Show component="div">
         <ShowSplitter
+            leftSideProps={{ md: 4 }}
+            rightSideProps={{ md: 8 }}
             leftSide={
                 <SimpleShowLayout>
-                    <AvatarShowField />
                     <TextField source="full_name" />
                     <TextField source="email" />
-                    <ArrayField source="skills">
-                        <SingleFieldList>
-                            <ChipField source="name" />
-                        </SingleFieldList>
-                    </ArrayField>
                 </SimpleShowLayout>
             }
             rightSide={
@@ -175,68 +66,118 @@ const StaffShow = props => (
                     <Tab label="Overview">
                         <TextField source="description" />
                     </Tab>
-                    <Tab label="Projects">
-                        {/* add more fields here */}
-                    </Tab>
                 </TabbedShowLayout>
             }
         />
     </Show>
-);
+)
 ```
-![image](https://user-images.githubusercontent.com/26602880/112832872-9ab94e00-909e-11eb-9127-2a864f1a241e.png)
 
-Override and customize the way the layout is split using the `leftSideProps` and `rightSideProps` props. You can pass objects with props which will be destructured to the respective `material-ui`'s `Grid` components which wrap the passed layouts.
+Override the default grid proportions and container components using `leftSideProps` and `rightSideProps`. These are passed directly to MUI's `Grid` component.
 
-The `component` prop is also supported by each side of the split layout. Example values:
-
-```jsx
+```tsx
 <ShowSplitter
     leftSideProps={{
         md: 4,
-        component: 'div'
+        component: 'div',
     }}
     rightSideProps={{
-        md: 8
+        md: 8,
     }}
     leftSide={...}
     rightSide={...}
 />
 ```
-<br/>
 
-## Create & Edit View Components
-### CompactForm
-Provides form layout customization out of the box just like using the `<SimpleForm/>`.
+### CompactChipField
 
-Pass to `layoutComponents` prop an array which specifies the used layout components to be escaped as non-input components while rendering.
+A wrapper around react-admin's `ChipField` that maps record values to per-value styling options (color and icon).
 
-**Important** - All layout components should have a specified `displayName`.
+```tsx
+import { CompactChipField } from 'ra-compact-ui'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'
+import AutorenewIcon from '@mui/icons-material/Autorenew'
 
-```jsx
-import { CompactForm, RaBox } from 'ra-compact-ui';
-
-...
-
-const StaffEdit = props => (
-    <Edit {...props}>
-        <CompactForm layoutComponents={[RaBox]}>
-            <RaBox display="flex" justifyContent="space-around">
-                <TextInput source="full_name" />
-                <TextInput source="email" />
-            </RaBox>
-            <TextInput source="description" />
-            <TextInput source="avatar_url" />
-        </CompactForm>
-    </Edit>
-);
+<CompactChipField
+    source="status"
+    options={{
+        Pending: { color: 'warning', icon: <HourglassEmptyIcon /> },
+        InProgress: { color: 'info', icon: <AutorenewIcon /> },
+        Done: { color: 'success', icon: <CheckCircleIcon /> },
+    }}
+/>
 ```
 
-<br/>
+**Props:**
 
-# About Author
+| Prop      | Type                             | Default   | Description |
+|-----------|----------------------------------|-----------|-------------|
+| `source`  | `string`                         | required  | The record property to display |
+| `options` | `Record<string, ChipOption>`     | required  | Map of values to `{ color, icon }` |
+| `variant` | `'filled' \| 'outlined' \| 'light'` | `'light'` | Chip display variant |
+| `size`    | `'small' \| 'medium'`            | `'small'` | Chip size |
+| `empty`   | `ReactElement \| null`           | `null`    | Fallback when value is missing |
+| `sx`      | `SxProps<Theme>`                 | -         | Additional MUI sx overrides |
 
-An enthusiast in :sparkling_heart: with building software who likes to call it "the grown up's LEGO".
+**Variants:**
+
+- `filled` - solid background with white text
+- `outlined` - transparent background with colored border and text
+- `light` - transparent background tinted with the color at 12% opacity, colored text (default)
+
+**Colors:** Accepts MUI palette keys (`'primary'`, `'success'`, `'error'`, etc.) or any CSS color string (`'#ff5722'`, `'tomato'`, `'rgb(255, 0, 0)'`).
+
+### AvatarField
+
+Displays a record's image as a MUI Avatar with size optimization.
+
+```tsx
+import { AvatarField } from 'ra-compact-ui'
+
+<AvatarField source="avatar_url" altSource="full_name" size="50" />
+```
+
+### ChipFieldArray
+
+Renders an array field as a list of MUI Chips.
+
+```tsx
+import { ChipFieldArray } from 'ra-compact-ui'
+
+<ChipFieldArray source="tags" />
+```
+
+### FullNameField
+
+Combines an `AvatarField` with a full name display (`firstName` + `lastName`).
+
+```tsx
+import { FullNameField } from 'ra-compact-ui'
+
+<FullNameField size="25" />
+```
+
+## Running the Demo
+
+The demo app uses Vite and points directly at the library source via a Vite alias, so changes are reflected instantly with HMR.
+
+```sh
+yarn start-demo
+```
+
+## Development
+
+```sh
+yarn install          # Install dependencies
+yarn build            # Build the library (tsc)
+yarn test             # Run tests (vitest)
+yarn lint             # Lint with ESLint
+yarn start-demo       # Start the demo app
+```
+
+## About Author
+
+An enthusiast in love with building software who likes to call it "the grown up's LEGO".
 
 If you enjoy the library and want to support me, you can always <a href="https://www.buymeacoffee.com/vdimitroff" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" /></a>
-
