@@ -1,6 +1,6 @@
 import { alpha, SxProps, Theme } from '@mui/material'
 import { ReactElement } from 'react'
-import { ChipField, useRecordContext } from 'react-admin'
+import { ChipField, RecordContextProvider, useRecordContext } from 'react-admin'
 
 type PaletteColor = 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
 
@@ -17,6 +17,7 @@ const PALETTE_COLORS = new Set<string>([
 interface ChipOption {
     color?: PaletteColor | (string & {})
     icon?: ReactElement
+    text?: string
 }
 
 interface CompactChipFieldProps {
@@ -43,6 +44,7 @@ export const CompactChipField = ({
     if (!value) return empty
 
     const optionValue = options[value]
+    const displayText = optionValue?.text
     const color = optionValue?.color
     const isPalette = color && PALETTE_COLORS.has(color)
 
@@ -78,7 +80,7 @@ export const CompactChipField = ({
         return {}
     }
 
-    return (
+    const chip = (
         <ChipField
             source={source}
             size={size}
@@ -92,4 +94,14 @@ export const CompactChipField = ({
             })) as any}
         />
     )
+
+    if (displayText) {
+        return (
+            <RecordContextProvider value={{ ...record, [source]: displayText }}>
+                {chip}
+            </RecordContextProvider>
+        )
+    }
+
+    return chip
 }
