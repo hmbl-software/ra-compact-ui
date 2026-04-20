@@ -1,6 +1,6 @@
 import Avatar from '@mui/material/Avatar'
 import { SxProps, Theme } from '@mui/material/styles'
-import { useRecordContext } from 'react-admin'
+import { useFieldValue } from 'react-admin'
 
 const getOptimizedSrc = (url: string, size: string) => `${url}?size=${size}x${size}`
 
@@ -10,6 +10,7 @@ interface AvatarFieldProps {
     size?: string
     fallback?: string
     sx?: SxProps<Theme>
+    record?: Record<string, unknown>
 }
 
 export const AvatarField = ({
@@ -18,18 +19,22 @@ export const AvatarField = ({
     size = '25',
     fallback,
     sx,
+    record,
 }: AvatarFieldProps) => {
-    const record = useRecordContext()
+    const imageSource = useFieldValue({ source, record })
+    const altText = useFieldValue({ source: altSource ?? '', record, defaultValue: '' })
 
-    return record ? (
+    if (!imageSource && !fallback) return null
+
+    return (
         <Avatar
-            src={(record[source] && getOptimizedSrc(record[source] as string, size)) || fallback}
+            src={(imageSource && getOptimizedSrc(imageSource, size)) || fallback}
             sx={{
                 width: `${size}px`,
                 height: `${size}px`,
                 ...sx,
             }}
-            alt={altSource ? (record[altSource] as string) : undefined}
+            alt={altText}
         />
-    ) : null
+    )
 }
