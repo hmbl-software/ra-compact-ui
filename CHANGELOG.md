@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/hmbl-software/ra-compact-ui/compare/3.1.0...3.2.0) (2026-04-20)
+
+
+### Features
+
+* Allow deep field sources on AvatarField ([#35](https://github.com/hmbl-software/ra-compact-ui/issues/35)) ([96a52c2](https://github.com/hmbl-software/ra-compact-ui/commit/96a52c2072641f5fe7f829478428347e37f550fc))
+
 ## [3.1.0](https://github.com/hmbl-software/ra-compact-ui/compare/3.1.0...3.1.0) (2026-04-18)
 
 
