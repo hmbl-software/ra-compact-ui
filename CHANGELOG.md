@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/hmbl-software/ra-compact-ui/compare/3.2.0...3.3.0) (2026-04-20)
+
+
+### Features
+
+* Add text field in CompactChipFiled options ([#37](https://github.com/hmbl-software/ra-compact-ui/issues/37)) ([58314e8](https://github.com/hmbl-software/ra-compact-ui/commit/58314e8504a1c8c15df76d3a163ffe1cc79c205f))
+
 ## [3.2.0](https://github.com/hmbl-software/ra-compact-ui/compare/3.1.0...3.2.0) (2026-04-20)
 
 
