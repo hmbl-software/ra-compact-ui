@@ -4,11 +4,12 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { Theme } from '@mui/material/styles'
 import { useRecordContext } from 'react-admin'
 
-interface ChipFieldArrayProps {
+interface ChipArrayFieldProps {
     source: string
+    label?: string
 }
 
-export const ChipFieldArray = ({ source }: ChipFieldArrayProps) => {
+export const ChipArrayField = ({ source }: ChipArrayFieldProps) => {
     const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
     const record = useRecordContext()
 

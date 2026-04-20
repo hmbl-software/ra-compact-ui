@@ -138,14 +138,14 @@ import { AvatarField } from 'ra-compact-ui'
 <AvatarField source="avatar_url" altSource="full_name" size="50" />
 ```
 
-### ChipFieldArray
+### ChipArrayField
 
 Renders an array field as a list of MUI Chips.
 
 ```tsx
-import { ChipFieldArray } from 'ra-compact-ui'
+import { ChipArrayField } from 'ra-compact-ui'
 
-<ChipFieldArray source="tags" />
+<ChipArrayField source="tags" />
 ```
 
 ### FullNameField

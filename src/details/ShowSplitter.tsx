@@ -12,9 +12,9 @@ interface SideProps {
 }
 
 interface ShowSplitterProps {
-    leftSide: ReactElement
+    leftSide?: ReactElement
     leftSideProps?: SideProps
-    rightSide: ReactElement
+    rightSide?: ReactElement
     rightSideProps?: SideProps
 }
 
@@ -46,12 +46,16 @@ const ShowSplitter = ({
 
     return (
         <Grid container spacing={4}>
-            <Grid item {...restLeftProps}>
-                <LeftContainer>{cloneElement(leftSide, props)}</LeftContainer>
-            </Grid>
-            <Grid item {...restRightProps}>
-                <RightContainer>{cloneElement(rightSide, props)}</RightContainer>
-            </Grid>
+            {leftSide && (
+                <Grid item {...restLeftProps}>
+                    <LeftContainer>{cloneElement(leftSide, props)}</LeftContainer>
+                </Grid>
+            )}
+            {rightSide && (
+                <Grid item {...restRightProps}>
+                    <RightContainer>{cloneElement(rightSide, props)}</RightContainer>
+                </Grid>
+            )}
         </Grid>
     )
 }
