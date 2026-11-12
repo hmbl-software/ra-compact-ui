@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/hmbl-software/ra-compact-ui/compare/3.3.0...3.3.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* Support react-admin 4 in AvatarField ([#39](https://github.com/hmbl-software/ra-compact-ui/issues/39)) ([64a56fa](https://github.com/hmbl-software/ra-compact-ui/commit/64a56faf913719dc0c2f46ba519e4bac930cb4c2))
+
 ## [3.3.0](https://github.com/hmbl-software/ra-compact-ui/compare/3.2.0...3.3.0) (2026-04-20)
 
 
